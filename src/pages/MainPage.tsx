@@ -119,11 +119,6 @@ export const MainPage = ({
                 <div className="absolute right-[14%] bottom-[10%] h-32 w-24 rounded-[999px] bg-gradient-to-t from-black via-[#120d09] to-[#20160e]" />
                 <div className="absolute right-[8%] bottom-[30%] h-10 w-10 rounded-full bg-gradient-to-br from-black via-[#1a120c] to-[#3b2717]" />
               </div>
-              <p className="mt-3 text-[11px] text-[#8a745e]">
-                {lang === "ko"
-                  ? "하루의 끝, 조용한 문장 위에서 시작되는 인사이트."
-                  : "Insights often begin in quiet moments with a single line."}
-              </p>
             </div>
           </div>
         </section>

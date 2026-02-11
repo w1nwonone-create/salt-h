@@ -22,7 +22,7 @@ export const ContactPage = ({
   const [budget, setBudget] = useState("");
   const [message, setMessage] = useState("");
 
-  const TARGET_EMAIL = "contact@salt-h.studio";
+  const TARGET_EMAIL = "winthefirst@salt-h.com";
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
