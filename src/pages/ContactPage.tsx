@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import type { Language } from "../App";
 import { Header } from "../shared/Header";
 import { Footer } from "../shared/Footer";
@@ -52,8 +53,24 @@ export const ContactPage = ({
     window.location.href = mailtoUrl;
   };
 
+  const TITLE = "프로젝트 문의 — Salt H";
+  const DESC = "브랜드 언어 설계, 세계관 구축, 콘텐츠 전략에 대해 문의하세요. Salt H가 답합니다.";
+
   return (
     <div className="min-h-screen flex flex-col bg-[#fff7ed] text-[#2b2118]">
+      <Helmet>
+        <title>{TITLE}</title>
+        <meta name="description" content={DESC} />
+        <link rel="canonical" href="https://salt-h.com/contact" />
+        <meta property="og:title" content={TITLE} />
+        <meta property="og:description" content={DESC} />
+        <meta property="og:url" content="https://salt-h.com/contact" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://salt-h.com/og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={TITLE} />
+        <meta name="twitter:description" content={DESC} />
+      </Helmet>
       <Header
         lang={lang}
         onToggleLang={onToggleLang}
