@@ -909,7 +909,7 @@ export const MainPage = ({
                 }}
               >
                 <a
-                  href="mailto:winthefirst@salt-h.com"
+                  href="mailto:ceo@ai-agentics.kr"
                   className="font-sans"
                   style={{
                     display: "inline-block",
@@ -951,7 +951,7 @@ export const MainPage = ({
                   className="font-sans"
                   style={{ fontSize: "12px", color: "rgba(247,242,234,0.22)" }}
                 >
-                  winthefirst@salt-h.com
+                  ceo@ai-agentics.kr
                 </p>
               </div>
             </FadeIn>
