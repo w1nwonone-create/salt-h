@@ -7,7 +7,7 @@ export const Footer = () => {
           in 2025.
         </p>
         <div className="flex flex-wrap gap-3">
-          <span>winthefirst@salt-h.com</span>
+          <span>ceo@ai-agentics.kr</span>
           <span className="text-[#b0967d]">|</span>
           <span>서울, Remote-friendly</span>
         </div>
