@@ -2,7 +2,6 @@ import { type ReactNode, useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Header } from "../shared/Header";
 import { Footer } from "../shared/Footer";
-import { About } from "../components/About";
 import type { Language } from "../App";
 
 type MainPageProps = {
@@ -825,9 +824,6 @@ export const MainPage = ({
         </section>
 
         <CreamToDarkBg />
-
-        {/* ── ABOUT ─────────────────────────────────────────────────────────── */}
-        <About lang={lang} />
 
         {/* ── CONTACT CTA ───────────────────────────────────────────────────── */}
         <section
