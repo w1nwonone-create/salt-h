@@ -1,0 +1,521 @@
+{
+ "tolerance": 0.001,
+ "analysis_months": [
+  "202411",
+  "202412",
+  "202501",
+  "202502",
+  "202503",
+  "202504",
+  "202505",
+  "202506",
+  "202507",
+  "202508",
+  "202509",
+  "202510",
+  "202511",
+  "202512",
+  "202601",
+  "202602",
+  "202603",
+  "202604",
+  "202605",
+  "202606",
+  "202607",
+  "202608",
+  "202609",
+  "202610"
+ ],
+ "questions": [
+  {
+   "id": "Q01",
+   "question": "애월 해안도로와 한림 협재 쪽 중에서, 카페를 하기에 비수기에 덜 흔들리는 곳은 어디일까요?",
+   "expected": {
+    "places": [
+     "aewol",
+     "hyeopjae"
+    ],
+    "industry": "cafe",
+    "metrics": [
+     "scale",
+     "season"
+    ],
+    "datasets": [
+     "card_grid_500m",
+     "pos_grid_500m"
+    ],
+    "values": {
+     "A.season": 0.5555055752978674,
+     "A.season_matched": false,
+     "B.season": 0.4089779119294582,
+     "B.season_matched": false
+    }
+   }
+  },
+  {
+   "id": "Q02",
+   "question": "함덕이랑 월정리 카페, 겨울 평일에도 손님이 있을까요?",
+   "expected": {
+    "places": [
+     "hamdeok",
+     "woljeong"
+    ],
+    "industry": "cafe",
+    "metrics": [
+     "scale",
+     "season",
+     "weekday"
+    ],
+    "datasets": [
+     "card_grid_500m",
+     "card_weekday_v02",
+     "pos_grid_500m"
+    ],
+    "values": {
+     "A.season": 0.531107398477109,
+     "A.season_matched": true,
+     "A.weekday": 0.8491928245686449,
+     "B.season": 0.3998424921489522,
+     "B.season_matched": true,
+     "B.weekday": 0.8155884239519183
+    }
+   }
+  },
+  {
+   "id": "Q03",
+   "question": "중문에서 횟집을 하면 관광객 의존도가 얼마나 될까요?",
+   "expected": {
+    "places": [
+     "jungmun"
+    ],
+    "industry": "seafood",
+    "metrics": [
+     "scale",
+     "tourism"
+    ],
+    "datasets": [
+     "card_grid_500m",
+     "card_weekday_v02",
+     "pos_grid_500m"
+    ],
+    "values": {
+     "A.tourism": 0.8358676851778472
+    }
+   }
+  },
+  {
+   "id": "Q04",
+   "question": "연동이랑 노형동 중에 한식당 평일 장사는 어디가 꾸준해요?",
+   "expected": {
+    "places": [
+     "yeondong",
+     "nohyeong"
+    ],
+    "industry": "korean",
+    "metrics": [
+     "scale",
+     "weekday"
+    ],
+    "datasets": [
+     "card_grid_500m",
+     "card_weekday_v02",
+     "pos_grid_500m"
+    ],
+    "values": {
+     "A.weekday": 1.1126761556511833,
+     "B.weekday": 1.0783064236531752
+    }
+   }
+  },
+  {
+   "id": "Q05",
+   "question": "성산에서 해산물 식당을 하면 비 오는 날 손님이 얼마나 줄어요?",
+   "expected": {
+    "places": [
+     "seongsan"
+    ],
+    "industry": "seafood",
+    "metrics": [
+     "scale",
+     "weather"
+    ],
+    "datasets": [
+     "bus_station",
+     "bus_usage",
+     "card_grid_500m",
+     "floating_pop_emd_v02",
+     "pos_grid_500m",
+     "weather_daily",
+     "weather_station"
+    ],
+    "values": {
+     "A.weather": -0.17024080289611895
+    }
+   }
+  },
+  {
+   "id": "Q06",
+   "question": "서귀포 올레시장 근처 분식집은 몇 시에 손님이 많을까요?",
+   "expected": {
+    "places": [
+     "seogwi"
+    ],
+    "industry": "snack",
+    "metrics": [
+     "scale",
+     "time"
+    ],
+    "datasets": [
+     "card_grid_500m",
+     "card_time_v02",
+     "pos_grid_500m"
+    ],
+    "values": {
+     "A.time_slot": "점심",
+     "A.time_share": 0.398792998608085
+    }
+   }
+  },
+  {
+   "id": "Q07",
+   "question": "세화에서 카페를 하면 비수기에도 괜찮을까요?",
+   "expected": {
+    "places": [
+     "sehwa"
+    ],
+    "industry": "cafe",
+    "metrics": [
+     "scale",
+     "season"
+    ],
+    "datasets": [
+     "card_grid_500m",
+     "pos_grid_500m"
+    ],
+    "values": {
+     "A.season": 0.5393562489687492,
+     "A.season_matched": false
+    }
+   }
+  },
+  {
+   "id": "Q08",
+   "question": "표선이랑 모슬포 치킨집, 비 오면 어떤가요?",
+   "expected": {
+    "places": [
+     "pyoseon",
+     "moseulpo"
+    ],
+    "industry": "chicken",
+    "metrics": [
+     "scale",
+     "weather"
+    ],
+    "datasets": [
+     "bus_station",
+     "bus_usage",
+     "card_grid_500m",
+     "floating_pop_emd_v02",
+     "pos_grid_500m",
+     "weather_daily",
+     "weather_station"
+    ],
+    "values": {
+     "A.weather": -0.15047254614092165,
+     "B.weather": -0.1515753357502836
+    }
+   }
+  },
+  {
+   "id": "Q09",
+   "question": "아라동 카페는 주말이랑 평일 차이가 큰가요?",
+   "expected": {
+    "places": [
+     "ara"
+    ],
+    "industry": "cafe",
+    "metrics": [
+     "scale",
+     "weekday"
+    ],
+    "datasets": [
+     "card_grid_500m",
+     "card_weekday_v02",
+     "pos_grid_500m"
+    ],
+    "values": {
+     "A.weekday": 1.2654018132582834
+    }
+   }
+  },
+  {
+   "id": "Q10",
+   "question": "원도심 동문시장 근처 주점은 몇 시가 제일 바쁜가요?",
+   "expected": {
+    "places": [
+     "ildo"
+    ],
+    "industry": "pub",
+    "metrics": [
+     "scale",
+     "time"
+    ],
+    "datasets": [
+     "card_grid_500m",
+     "card_time_v02",
+     "pos_grid_500m"
+    ],
+    "values": {
+     "A.time_slot": "저녁",
+     "A.time_share": 0.4501601981249275
+    }
+   }
+  },
+  {
+   "id": "Q11",
+   "question": "이호테우 카페랑 함덕 카페, 관광객 비중을 비교해 주세요",
+   "expected": {
+    "places": [
+     "dodu",
+     "hamdeok"
+    ],
+    "industry": "cafe",
+    "metrics": [
+     "scale",
+     "tourism"
+    ],
+    "datasets": [
+     "card_grid_500m",
+     "card_weekday_v02",
+     "pos_grid_500m"
+    ],
+    "values": {
+     "A.tourism": 0.4126650686915151,
+     "B.tourism": 0.5305743203436175
+    }
+   }
+  },
+  {
+   "id": "Q12",
+   "question": "협재에서 베이커리를 하면 비수기와 성수기 차이가 어느 정도인가요?",
+   "expected": {
+    "places": [
+     "hyeopjae"
+    ],
+    "industry": "bakery",
+    "metrics": [
+     "scale",
+     "season"
+    ],
+    "datasets": [
+     "card_grid_500m",
+     "pos_grid_500m"
+    ],
+    "values": {
+     "A.season": 0.4285329137117141,
+     "A.season_matched": false
+    }
+   }
+  },
+  {
+   "id": "Q13",
+   "question": "노형 편의점은 평일이랑 주말 매출 차이가 있나요?",
+   "expected": {
+    "places": [
+     "nohyeong"
+    ],
+    "industry": "convenience",
+    "metrics": [
+     "scale",
+     "weekday"
+    ],
+    "datasets": [
+     "card_grid_500m",
+     "card_weekday_v02",
+     "pos_grid_500m"
+    ],
+    "values": {
+     "A.weekday": 1.0723632672780576
+    }
+   }
+  },
+  {
+   "id": "Q14",
+   "question": "애월에서 한식당을 하면 비 오는 날 손님이 줄까요?",
+   "expected": {
+    "places": [
+     "aewol"
+    ],
+    "industry": "korean",
+    "metrics": [
+     "scale",
+     "weather"
+    ],
+    "datasets": [
+     "bus_station",
+     "bus_usage",
+     "card_grid_500m",
+     "floating_pop_emd_v02",
+     "pos_grid_500m",
+     "weather_daily",
+     "weather_station"
+    ],
+    "values": {
+     "A.weather": -0.1760966880465676
+    }
+   }
+  },
+  {
+   "id": "Q15",
+   "question": "월정리 카페는 겨울에 얼마나 줄어드나요?",
+   "expected": {
+    "places": [
+     "woljeong"
+    ],
+    "industry": "cafe",
+    "metrics": [
+     "scale",
+     "season"
+    ],
+    "datasets": [
+     "card_grid_500m",
+     "pos_grid_500m"
+    ],
+    "values": {
+     "A.season": 0.3998424921489522,
+     "A.season_matched": true
+    }
+   }
+  },
+  {
+   "id": "Q16",
+   "question": "중문이랑 서귀포 시내 양식당, 관광객 비중은 어떤가요?",
+   "expected": {
+    "places": [
+     "jungmun",
+     "seogwi"
+    ],
+    "industry": "western",
+    "metrics": [
+     "scale",
+     "tourism"
+    ],
+    "datasets": [
+     "card_grid_500m",
+     "card_weekday_v02",
+     "pos_grid_500m"
+    ],
+    "values": {
+     "A.tourism": 0.6767576759738536,
+     "B.tourism": 0.29800837029913196
+    }
+   }
+  },
+  {
+   "id": "Q17",
+   "question": "연동 치킨집은 몇 시에 손님이 많아요?",
+   "expected": {
+    "places": [
+     "yeondong"
+    ],
+    "industry": "chicken",
+    "metrics": [
+     "scale",
+     "time"
+    ],
+    "datasets": [
+     "card_grid_500m",
+     "card_time_v02",
+     "pos_grid_500m"
+    ],
+    "values": {
+     "A.time_slot": "저녁",
+     "A.time_share": 0.42574462510699096
+    }
+   }
+  },
+  {
+   "id": "Q18",
+   "question": "함덕 해산물 식당, 비수기와 비 오는 날에는 어떤가요?",
+   "expected": {
+    "places": [
+     "hamdeok"
+    ],
+    "industry": "seafood",
+    "metrics": [
+     "scale",
+     "season",
+     "weather"
+    ],
+    "datasets": [
+     "bus_station",
+     "bus_usage",
+     "card_grid_500m",
+     "floating_pop_emd_v02",
+     "pos_grid_500m",
+     "weather_daily",
+     "weather_station"
+    ],
+    "values": {
+     "A.season": 0.44725099062151813,
+     "A.season_matched": true,
+     "A.weather": -0.17944089814672048
+    }
+   }
+  },
+  {
+   "id": "Q19",
+   "question": "모슬포 횟집은 관광객 빠지는 겨울에도 괜찮을까요?",
+   "expected": {
+    "places": [
+     "moseulpo"
+    ],
+    "industry": "seafood",
+    "metrics": [
+     "scale",
+     "season",
+     "tourism"
+    ],
+    "datasets": [
+     "card_grid_500m",
+     "card_weekday_v02",
+     "pos_grid_500m"
+    ],
+    "values": {
+     "A.season": 0.5082894569470277,
+     "A.season_matched": false,
+     "A.tourism": 0.5465338678820213
+    }
+   }
+  },
+  {
+   "id": "Q20",
+   "question": "아라동 분식집, 비 오는 날이랑 평일에는 어떤가요?",
+   "expected": {
+    "places": [
+     "ara"
+    ],
+    "industry": "snack",
+    "metrics": [
+     "scale",
+     "weekday",
+     "weather"
+    ],
+    "datasets": [
+     "bus_station",
+     "bus_usage",
+     "card_grid_500m",
+     "card_weekday_v02",
+     "floating_pop_emd_v02",
+     "pos_grid_500m",
+     "weather_daily",
+     "weather_station"
+    ],
+    "values": {
+     "A.weekday": 1.2613202562411012,
+     "A.weather": -0.05290867158710781
+    }
+   }
+  }
+ ]
+}

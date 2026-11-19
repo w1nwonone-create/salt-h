@@ -1,0 +1,23 @@
+{
+  "db_path": "/home/user/salt-h/Jeju-AgenticX/data/jeju.duckdb",
+  "sha256": "f9b4253df8ee85d1d8075729438f8c9131e8208dcbe83e48721d102a56b70f2d",
+  "tables": {
+    "_meta": 3,
+    "bus_station": 49,
+    "bus_usage": 1262640,
+    "card_grid_500m": 77760,
+    "card_time_v02": 64800,
+    "card_weekday_v02": 99360,
+    "floating_pop_emd_v02": 368688,
+    "pos_grid_500m": 35618,
+    "ref_bjd": 15,
+    "ref_holiday": 39,
+    "weather_daily": 2920,
+    "weather_station": 4
+  },
+  "meta": {
+    "built_at": "2026-11-19T11:25:01",
+    "seed": "20261119",
+    "kind": "sample"
+  }
+}

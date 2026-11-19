@@ -1,0 +1,192 @@
+# Jeju-AgenticX 데이터 카탈로그 (데이터셋 · 항목 명세 및 매핑)
+#
+# Navigator 는 이 파일을 "질문 기준"으로 검색합니다(catalog_search).
+# - datasets: 제주데이터허브 「데이터 명세서」 컬럼 기준. table 은 jeju.duckdb 내 테이블명.
+# - metrics : 상권 체력 지표 ↔ 필요한 데이터셋 ↔ 분석 템플릿 연결.
+# - export  : "가능" | "가공 형태만" (반출 제한: 센터 PC 안에서 집계 후 결과만 반출)
+
+version: "2026.11"
+
+datasets:
+  card_grid_500m:
+    name: 카드 이용 현황(500m격자)
+    provider: 제주데이터허브 / 비씨카드
+    grain: 500m 격자 · 월
+    export: 가공 형태만
+    tags: [카드, 소비, 매출, 규모, 격자, 시즌, 비수기, 성수기, 월별, 추이]
+    columns:
+      base_year_month: {type: VARCHAR, desc: 기준연월(YYYYMM)}
+      grid_500m: {type: VARCHAR, desc: 500m 격자 ID, key: grid}
+      bjd: {type: VARCHAR, desc: 법정동 코드, key: bjd}
+      biz_cd: {type: VARCHAR, desc: 업종 코드(42개 업종)}
+      biz_nm: {type: VARCHAR, desc: 업종명}
+      user_type: {type: VARCHAR, desc: 이용자 구분(개인·법인)}
+      use_cnt: {type: BIGINT, desc: 이용 건수}
+      use_amt: {type: BIGINT, desc: 이용 금액(원)}
+
+  pos_grid_500m:
+    name: 외식업 포스 이용 현황(500m격자)
+    provider: 제주데이터허브
+    grain: 500m 격자 · 월
+    export: 가공 형태만
+    tags: [외식업, 포스, 매출, 점포, 표본, 격자, 시즌, 월별]
+    columns:
+      base_year_month: {type: VARCHAR, desc: 기준연월(YYYYMM)}
+      grid_500: {type: VARCHAR, desc: 500m 격자 ID, key: grid}
+      biz_small_nm: {type: VARCHAR, desc: 업종 소분류명}
+      sale_amt: {type: BIGINT, desc: 매출 금액(원)}
+      store_cnt: {type: INTEGER, desc: 표본 점포 수}
+      use_cnt: {type: BIGINT, desc: 결제 건수}
+
+  card_weekday_v02:
+    name: 카드 이용 현황(요일별)_v02
+    provider: 제주데이터허브 / 비씨카드
+    grain: 법정동 · 월 · 요일
+    export: 가공 형태만
+    tags: [카드, 요일, 평일, 주말, 공휴일, 관광객, 도민, 관광, 의존도]
+    columns:
+      base_year_month: {type: VARCHAR, desc: 기준연월(YYYYMM)}
+      bjd: {type: VARCHAR, desc: 법정동 코드, key: bjd}
+      biz_cd: {type: VARCHAR, desc: 업종 코드}
+      tour_type: {type: VARCHAR, desc: 관광구분(개별관광객·단체관광객·도민)}
+      week: {type: VARCHAR, desc: 요일(월~일·공휴일)}
+      use_cnt: {type: BIGINT, desc: 이용 건수}
+      use_amt: {type: BIGINT, desc: 이용 금액(원)}
+
+  card_time_v02:
+    name: 카드 이용 현황(시간대)_v02
+    provider: 제주데이터허브 / 비씨카드
+    grain: 법정동 · 월 · 시간대
+    export: 가공 형태만
+    tags: [카드, 시간대, 오전, 점심, 오후, 저녁, 밤, 영업시간, 몇시]
+    columns:
+      base_year_month: {type: VARCHAR, desc: 기준연월(YYYYMM)}
+      bjd: {type: VARCHAR, desc: 법정동 코드, key: bjd}
+      biz_cd: {type: VARCHAR, desc: 업종 코드}
+      tour_type: {type: VARCHAR, desc: 관광구분(개별관광객·단체관광객·도민)}
+      time: {type: VARCHAR, desc: 시간대(오전·점심·오후·저녁·밤)}
+      use_cnt: {type: BIGINT, desc: 이용 건수}
+      use_amt: {type: BIGINT, desc: 이용 금액(원)}
+
+  floating_pop_emd_v02:
+    name: 내국인 유동인구(읍면동)_v02
+    provider: 제주데이터허브
+    grain: 행정동 · 일 · 시간
+    export: 가공 형태만
+    available_from: "2025-05-01"
+    tags: [유동인구, 방문인구, 날씨, 우천, 관광객, 일별, 행정동]
+    columns:
+      base_date: {type: DATE, desc: 기준일자}
+      time: {type: INTEGER, desc: 시간(0~23)}
+      emd_nm: {type: VARCHAR, desc: 행정동명, key: emd}
+      resd: {type: VARCHAR, desc: 거주지 구분(제주·그외)}
+      visit_pop_cnt: {type: DOUBLE, desc: 방문인구 수}
+
+  bus_usage:
+    name: 버스 정류소별 이용 현황
+    provider: 제주데이터허브
+    grain: 정류소 · 일 · 시간
+    export: 가능
+    tags: [버스, 정류소, 승차, 하차, 이용객, 유동, 날씨, 우천, 일별]
+    columns:
+      base_date: {type: DATE, desc: 기준일자}
+      base_hour: {type: INTEGER, desc: 시간(0~23)}
+      bus_station_id: {type: VARCHAR, desc: 정류소 ID, key: stop}
+      get_on_off_type: {type: VARCHAR, desc: 승하차 구분(승차·하차)}
+      user_count: {type: INTEGER, desc: 이용자 수}
+
+  bus_station:
+    name: 버스 정류소 정보
+    provider: 제주데이터허브
+    grain: 정류소
+    export: 가능
+    tags: [버스, 정류소, 좌표, 위치]
+    columns:
+      bus_station_id: {type: VARCHAR, desc: 정류소 ID, key: stop}
+      bus_station_nm: {type: VARCHAR, desc: 정류소명}
+      longitude: {type: DOUBLE, desc: 경도}
+      latitude: {type: DOUBLE, desc: 위도}
+
+  weather_daily:
+    name: 일일 날씨 정보
+    provider: 제주데이터허브 / 기상청
+    grain: 관측소 · 일
+    export: 가능
+    tags: [날씨, 강수, 우천, 기온, 바람, 강풍, 일별]
+    columns:
+      base_date: {type: DATE, desc: 기준일자}
+      observatory_code: {type: VARCHAR, desc: 관측소 코드, key: station}
+      daily_rainfall: {type: DOUBLE, desc: 일강수량(mm)}
+      average_temperature: {type: DOUBLE, desc: 평균기온(℃)}
+      maximum_wind_speed: {type: DOUBLE, desc: 최대풍속(m/s)}
+
+  weather_station:
+    name: 날씨 관측소 정보
+    provider: 기상청
+    grain: 관측소
+    export: 가능
+    tags: [날씨, 관측소, 좌표]
+    columns:
+      observatory_code: {type: VARCHAR, desc: 관측소 코드, key: station}
+      observatory_nm: {type: VARCHAR, desc: 관측소명}
+      latitude: {type: DOUBLE, desc: 위도}
+      longitude: {type: DOUBLE, desc: 경도}
+
+# 상권 체력 지표 → 데이터셋 · 분석 템플릿
+metrics:
+  scale:
+    label: 소비 규모
+    question_keywords: [규모, 매출, 얼마나, 많이, 비교, 어디]
+    template: season_stability      # 월별 추이와 규모는 시즌 템플릿이 함께 산출
+    datasets: [card_grid_500m, pos_grid_500m]
+    grain: month
+  season:
+    label: 시즌 안정성
+    question_keywords: [비수기, 성수기, 시즌, 겨울, 여름, 계절, 흔들, 버틸, 견딜, 관광객 빠지]
+    template: season_stability
+    datasets: [card_grid_500m, pos_grid_500m]
+    grain: month
+  tourism:
+    label: 관광 의존도
+    question_keywords: [관광객, 관광, 도민, 동네, 단골, 의존]
+    template: tourism_dependency
+    datasets: [card_weekday_v02]
+    grain: month
+  weekday:
+    label: 평일 안정성
+    question_keywords: [평일, 주말, 요일, 주중, 월요일, 화요일, 수요일, 목요일, 금요일]
+    template: weekday_stability
+    datasets: [card_weekday_v02]
+    grain: month
+  weather:
+    label: 날씨 민감도
+    question_keywords: [비 오, 비오, 비가, 비 내, 비내, 날씨, 우천, 궂은, 장마, 태풍, 강수, 눈 오]
+    template: weather_sensitivity
+    datasets: [floating_pop_emd_v02, bus_usage, bus_station, weather_daily, weather_station]
+    grain: day
+  time:
+    label: 시간대 패턴
+    question_keywords: [몇 시, 몇시, 시간대, 오전, 점심, 오후, 저녁, 밤, 영업시간]
+    template: time_pattern
+    datasets: [card_time_v02]
+    grain: month
+
+# 카드 업종 코드 (42개 업종 중 외식·음료·편의점 관련 일부. 전체 목록은 명세서 참조)
+biz_codes:
+  I56111: 한식 일반 음식점업
+  I56113: 한식 육류 요리 전문점
+  I56114: 한식 해산물 요리 전문점
+  I56123: 서양식 음식점업
+  I56191: 제과점업
+  I56192: 피자·햄버거·샌드위치 및 유사 음식점업
+  I56193: 치킨 전문점
+  I56194: 분식 및 김밥 전문점
+  I56213: 생맥주 전문점
+  I56219: 기타 주점업
+  I56220: 비알콜 음료점업
+  G47122: 체인화 편의점
+
+sources_footer: >-
+  출처: 제주데이터허브(jejudatahub.net)·제주빅데이터센터 — 카드 이용 현황(500m격자, 요일별·시간대 v02),
+  외식업 포스 이용 현황, 내국인 유동인구(읍면동)_v02, 버스 정류소별 이용 현황·정류소 정보,
+  일일 날씨 정보·관측소 정보. 반출 제한 데이터는 가공된 집계 결과만 수록.

@@ -1,0 +1,21 @@
+{
+  "question": "애월 해안도로와 한림 협재 쪽 중에서, 카페를 하기에 비수기에 덜 흔들리는 곳은 어디일까요?",
+  "candidates": [
+    {
+      "label": "애월 해안도로(한담·애월리)",
+      "lat": 33.4627,
+      "lon": 126.3115,
+      "place_id": "aewol"
+    },
+    {
+      "label": "한림 협재(협재해수욕장)",
+      "lat": 33.3941,
+      "lon": 126.2398,
+      "place_id": "hyeopjae"
+    }
+  ],
+  "industry": "cafe",
+  "answers": {
+    "conditions": "all"
+  }
+}

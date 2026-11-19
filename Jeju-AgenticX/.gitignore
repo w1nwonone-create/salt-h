@@ -1,0 +1,11 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+data/jeju.duckdb
+data/jeju.duckdb.wal
+data/raw/*
+!data/raw/.gitkeep
+runs/*
+!runs/sample/

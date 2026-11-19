@@ -1,0 +1,286 @@
+{
+  "candidates": [
+    {
+      "label": "애월 해안도로(한담·애월리)",
+      "lat": 33.4627,
+      "lon": 126.3115,
+      "place_id": "aewol",
+      "grid": "G500_1779_2994",
+      "grids_3x3": [
+        "G500_1778_2993",
+        "G500_1779_2993",
+        "G500_1780_2993",
+        "G500_1778_2994",
+        "G500_1779_2994",
+        "G500_1780_2994",
+        "G500_1778_2995",
+        "G500_1779_2995",
+        "G500_1780_2995"
+      ],
+      "edge_distance_m": 55.3,
+      "near_boundary": true,
+      "boundary_neighbors": [
+        "G500_1778_2994",
+        "G500_1779_2995"
+      ],
+      "bjd": "5011025321",
+      "bjd_nm": "애월읍 애월리",
+      "emd": "애월읍",
+      "sgg": "제주시",
+      "bjd_method": "selected",
+      "bjd_distance_m": 0,
+      "far_from_reference": false,
+      "stops": [
+        {
+          "id": "406000107",
+          "name": "애월리",
+          "distance_m": 115,
+          "lat": 33.463467,
+          "lon": 126.312333
+        },
+        {
+          "id": "406000110",
+          "name": "한담해변",
+          "distance_m": 258,
+          "lat": 33.460602,
+          "lon": 126.312694
+        },
+        {
+          "id": "406000133",
+          "name": "애월초등학교",
+          "distance_m": 407,
+          "lat": 33.463235,
+          "lon": 126.315844
+        }
+      ],
+      "stop_radius_m": 500,
+      "stop_radius_expanded": false,
+      "station": {
+        "code": "184",
+        "name": "제주",
+        "distance_m": 21027
+      },
+      "id": "c1",
+      "tag": "A"
+    },
+    {
+      "label": "한림 협재(협재해수욕장)",
+      "lat": 33.3941,
+      "lon": 126.2398,
+      "place_id": "hyeopjae",
+      "grid": "G500_1765_2979",
+      "grids_3x3": [
+        "G500_1764_2978",
+        "G500_1765_2978",
+        "G500_1766_2978",
+        "G500_1764_2979",
+        "G500_1765_2979",
+        "G500_1766_2979",
+        "G500_1764_2980",
+        "G500_1765_2980",
+        "G500_1766_2980"
+      ],
+      "edge_distance_m": 127.3,
+      "near_boundary": false,
+      "boundary_neighbors": [],
+      "bjd": "5011025029",
+      "bjd_nm": "한림읍 협재리",
+      "emd": "한림읍",
+      "sgg": "제주시",
+      "bjd_method": "selected",
+      "bjd_distance_m": 0,
+      "far_from_reference": false,
+      "stops": [
+        {
+          "id": "406000164",
+          "name": "협재해수욕장",
+          "distance_m": 153,
+          "lat": 33.395204,
+          "lon": 126.240782
+        },
+        {
+          "id": "406000169",
+          "name": "협재리",
+          "distance_m": 238,
+          "lat": 33.392002,
+          "lon": 126.24028
+        },
+        {
+          "id": "406000189",
+          "name": "한림공원",
+          "distance_m": 389,
+          "lat": 33.390654,
+          "lon": 126.24051
+        }
+      ],
+      "stop_radius_m": 500,
+      "stop_radius_expanded": false,
+      "station": {
+        "code": "185",
+        "name": "고산",
+        "distance_m": 13249
+      },
+      "id": "c2",
+      "tag": "B"
+    }
+  ],
+  "datasets": [
+    {
+      "key": "card_grid_500m",
+      "name": "카드 이용 현황(500m격자)",
+      "grain": "500m 격자 · 월",
+      "export": "가공 형태만",
+      "for_metrics": [
+        "scale",
+        "season"
+      ],
+      "period": {
+        "column": "base_year_month",
+        "from": "202411",
+        "to": "202610"
+      },
+      "rows": 77760
+    },
+    {
+      "key": "pos_grid_500m",
+      "name": "외식업 포스 이용 현황(500m격자)",
+      "grain": "500m 격자 · 월",
+      "export": "가공 형태만",
+      "for_metrics": [
+        "scale",
+        "season"
+      ],
+      "period": {
+        "column": "base_year_month",
+        "from": "202411",
+        "to": "202610"
+      },
+      "rows": 35618
+    },
+    {
+      "key": "card_weekday_v02",
+      "name": "카드 이용 현황(요일별)_v02",
+      "grain": "법정동 · 월 · 요일",
+      "export": "가공 형태만",
+      "for_metrics": [
+        "tourism",
+        "weekday"
+      ],
+      "period": {
+        "column": "base_year_month",
+        "from": "202411",
+        "to": "202610"
+      },
+      "rows": 99360
+    },
+    {
+      "key": "floating_pop_emd_v02",
+      "name": "내국인 유동인구(읍면동)_v02",
+      "grain": "행정동 · 일 · 시간",
+      "export": "가공 형태만",
+      "for_metrics": [
+        "weather"
+      ],
+      "period": {
+        "column": "base_date",
+        "from": "2025-05-01",
+        "to": "2026-10-31"
+      },
+      "rows": 368688
+    },
+    {
+      "key": "bus_usage",
+      "name": "버스 정류소별 이용 현황",
+      "grain": "정류소 · 일 · 시간",
+      "export": "가능",
+      "for_metrics": [
+        "weather"
+      ],
+      "period": {
+        "column": "base_date",
+        "from": "2024-11-01",
+        "to": "2026-10-31"
+      },
+      "rows": 1262640
+    },
+    {
+      "key": "bus_station",
+      "name": "버스 정류소 정보",
+      "grain": "정류소",
+      "export": "가능",
+      "for_metrics": [
+        "weather"
+      ],
+      "period": null,
+      "rows": 49
+    },
+    {
+      "key": "weather_daily",
+      "name": "일일 날씨 정보",
+      "grain": "관측소 · 일",
+      "export": "가능",
+      "for_metrics": [
+        "weather"
+      ],
+      "period": {
+        "column": "base_date",
+        "from": "2024-11-01",
+        "to": "2026-10-31"
+      },
+      "rows": 2920
+    },
+    {
+      "key": "weather_station",
+      "name": "날씨 관측소 정보",
+      "grain": "관측소",
+      "export": "가능",
+      "for_metrics": [
+        "weather"
+      ],
+      "period": null,
+      "rows": 4
+    }
+  ],
+  "metrics": [
+    "scale",
+    "season",
+    "tourism",
+    "weekday",
+    "weather"
+  ],
+  "unavailable": {},
+  "months": [
+    "202411",
+    "202412",
+    "202501",
+    "202502",
+    "202503",
+    "202504",
+    "202505",
+    "202506",
+    "202507",
+    "202508",
+    "202509",
+    "202510",
+    "202511",
+    "202512",
+    "202601",
+    "202602",
+    "202603",
+    "202604",
+    "202605",
+    "202606",
+    "202607",
+    "202608",
+    "202609",
+    "202610"
+  ],
+  "date_from": "2024-11-01",
+  "date_to": "2026-10-31",
+  "same_grid": [],
+  "same_bjd": [],
+  "same_emd": [],
+  "warnings": [
+    "내국인 유동인구(읍면동)_v02 는 2025년 5월부터 제공되어, 방문인구 기준 날씨 비교 기간은 그 이후로 한정됩니다."
+  ]
+}

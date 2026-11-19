@@ -1,0 +1,17 @@
+{"time": "2026-11-19T11:41:04", "stage": "planner", "message": "분석 엔진: 규칙 기반 (LLM 미사용)"}
+{"time": "2026-11-19T11:41:05", "stage": "planner", "message": "오케스트레이션: langgraph"}
+{"time": "2026-11-19T11:41:05", "stage": "planner", "message": "질문을 이해하고 있습니다"}
+{"time": "2026-11-19T11:41:05", "stage": "planner", "message": "분석 계획: 후보지 2곳 · 카페·음료 · 지표 scale, season, tourism, weekday, weather"}
+{"time": "2026-11-19T11:41:05", "stage": "navigator", "message": "데이터를 찾고 있습니다"}
+{"time": "2026-11-19T11:41:05", "stage": "navigator", "message": "A 애월 해안도로(한담·애월리) → 격자 G500_1779_2994 · 애월읍 애월리 · 정류소 3곳 · 관측소 제주"}
+{"time": "2026-11-19T11:41:05", "stage": "navigator", "message": "B 한림 협재(협재해수욕장) → 격자 G500_1765_2979 · 한림읍 협재리 · 정류소 3곳 · 관측소 고산"}
+{"time": "2026-11-19T11:41:05", "stage": "navigator", "message": "활용 데이터: 카드 이용 현황(500m격자), 외식업 포스 이용 현황(500m격자), 카드 이용 현황(요일별)_v02, 내국인 유동인구(읍면동)_v02, 버스 정류소별 이용 현황, 버스 정류소 정보, 일일 날씨 정보, 날씨 관측소 정보", "datasets": ["카드 이용 현황(500m격자)", "외식업 포스 이용 현황(500m격자)", "카드 이용 현황(요일별)_v02", "내국인 유동인구(읍면동)_v02", "버스 정류소별 이용 현황", "버스 정류소 정보", "일일 날씨 정보", "날씨 관측소 정보"]}
+{"time": "2026-11-19T11:41:05", "stage": "analyst", "message": "분석하고 있습니다"}
+{"time": "2026-11-19T11:41:06", "stage": "analyst", "message": "01_season_stability 실행 완료 (0.5초)", "file": "code/01_season_stability.py"}
+{"time": "2026-11-19T11:41:06", "stage": "analyst", "message": "02_tourism_dependency 실행 완료 (0.6초)", "file": "code/02_tourism_dependency.py"}
+{"time": "2026-11-19T11:41:07", "stage": "analyst", "message": "03_weekday_stability 실행 완료 (0.5초)", "file": "code/03_weekday_stability.py"}
+{"time": "2026-11-19T11:41:08", "stage": "analyst", "message": "04_weather_sensitivity 실행 완료 (0.9초)", "file": "code/04_weather_sensitivity.py"}
+{"time": "2026-11-19T11:41:08", "stage": "critic", "message": "결과를 검증하고 있습니다"}
+{"time": "2026-11-19T11:41:08", "stage": "critic", "message": "검증 통과 (주의 3건은 한계로 표시)", "verdict": "pass"}
+{"time": "2026-11-19T11:41:08", "stage": "reporter", "message": "리포트를 만들고 있습니다"}
+{"time": "2026-11-19T11:41:08", "stage": "reporter", "message": "리포트를 만들었습니다.", "file": "report.html"}

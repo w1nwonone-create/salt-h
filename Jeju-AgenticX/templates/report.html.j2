@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ r.title }} — Jeju-AgenticX</title>
+<style>
+  :root { --ink:#1f2937; --muted:#6b7280; --line:#e5e7eb; --soft:#f8fafc; --accent:#0f766e; --warn:#b45309; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:#fff; color:var(--ink); font-family:'Pretendard','Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif;
+         font-size:15px; line-height:1.65; }
+  .wrap { max-width:860px; margin:0 auto; padding:28px 20px 48px; }
+  header { border-bottom:3px solid var(--accent); padding-bottom:14px; margin-bottom:18px; }
+  .brand { color:var(--accent); font-weight:700; font-size:13px; letter-spacing:.02em; }
+  h1 { font-size:26px; margin:4px 0 6px; }
+  .q { background:var(--soft); border-left:4px solid var(--accent); padding:10px 14px; margin:10px 0; font-size:15px; }
+  .meta { color:var(--muted); font-size:13px; }
+  h2 { font-size:19px; margin:26px 0 10px; padding-bottom:4px; border-bottom:1px solid var(--line); }
+  .cands { display:flex; gap:10px; flex-wrap:wrap; }
+  .cand { flex:1 1 220px; border:1px solid var(--line); border-radius:8px; padding:8px 12px; font-size:13px; }
+  .cand b { font-size:15px; }
+  .tag { display:inline-block; width:22px; height:22px; border-radius:50%; color:#fff; text-align:center; line-height:22px;
+         font-size:13px; font-weight:700; margin-right:6px; }
+  .tA { background:#2563eb; } .tB { background:#ea580c; } .tC { background:#059669; }
+  .summary li { margin:6px 0; font-size:16px; }
+  .consult { background:#f0fdfa; border:1px solid #99f6e4; border-radius:8px; padding:10px 16px; }
+  .consult li { margin:4px 0; }
+  table { width:100%; border-collapse:collapse; font-size:14px; }
+  th, td { border-bottom:1px solid var(--line); padding:8px 8px; text-align:left; vertical-align:top; }
+  th { background:var(--soft); font-weight:600; }
+  td.num { text-align:right; white-space:nowrap; font-variant-numeric:tabular-nums; }
+  tr.sub td { color:var(--muted); font-size:13px; padding-top:3px; padding-bottom:3px; }
+  .fig { border:1px solid var(--line); border-radius:8px; padding:8px 10px 2px; margin:12px 0; break-inside:avoid; }
+  .fig h3 { font-size:15px; margin:2px 0 4px; }
+  .limits li, .dyn li { font-size:13.5px; margin:3px 0; }
+  .dyn li { color:var(--warn); }
+  .checks { font-size:12.5px; color:var(--muted); }
+  .checks .warn { color:var(--warn); } .checks .fail { color:#b91c1c; }
+  footer { margin-top:28px; padding-top:10px; border-top:1px solid var(--line); color:var(--muted); font-size:12px; }
+  .btn { display:inline-block; background:var(--accent); color:#fff; border:0; border-radius:8px; padding:10px 18px; font-size:15px;
+         cursor:pointer; }
+  .src { font-size:12px; color:var(--muted); }
+  details summary { cursor:pointer; color:var(--muted); font-size:13px; }
+  .figs { display:grid; grid-template-columns:1fr; gap:0 12px; }
+  @media (min-width: 900px) { .figs { grid-template-columns:1fr 1fr; } }
+  @page { size:A4; margin:10mm; }
+  @media print {
+    .noprint { display:none !important; }
+    .wrap { padding:0; max-width:none; }
+    body { font-size:10.5px; line-height:1.45; }
+    h1 { font-size:20px; } h2 { font-size:14px; margin:10px 0 5px; }
+    header { padding-bottom:8px; margin-bottom:10px; }
+    .q { padding:5px 10px; margin:6px 0; font-size:11.5px; }
+    .cand { padding:5px 8px; font-size:10px; } .cand b { font-size:11.5px; }
+    .summary li { font-size:11.5px; margin:3px 0; }
+    .consult { padding:4px 12px; } .consult li { margin:2px 0; }
+    th, td { padding:3px 6px; font-size:10px; } tr.sub td { font-size:9.5px; padding:1px 6px; }
+    .figs { grid-template-columns:1fr 1fr; }
+    .fig { padding:4px 6px 0; margin:5px 0; } .fig h3 { font-size:11px; }
+    .limits li, .dyn li { font-size:9.5px; margin:1px 0; }
+    .src, footer { font-size:9px; }
+    details { display:none; }
+    h2 { break-after:avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="brand">Jeju-AgenticX · 상권 체력 분석</div>
+  <h1>{{ r.title }}</h1>
+  <div class="q">“{{ r.question or '후보지 비교하기' }}”</div>
+  <div class="meta">업종 {{ r.industry or '-' }} · 작성 {{ r.created }} · 분석 엔진 {{ r.llm }} · 실행 기록 {{ r.run_dir }}</div>
+  <p class="noprint" style="margin:10px 0 0"><button class="btn" onclick="window.print()">PDF로 저장 / 인쇄</button></p>
+</header>
+
+{% if r.candidates %}
+<div class="cands">
+{% for c in r.candidates %}
+  <div class="cand"><span class="tag t{{ c.tag }}">{{ c.tag }}</span><b>{{ c.label }}</b><br>
+  {{ c.bjd_nm }} · 행정동 {{ c.emd }}<br>격자 {{ c.grid }} · 정류소 {{ c.stops|length }}곳 · 관측소 {{ c.station }}({{ c.station_km }}km)</div>
+{% endfor %}
+</div>
+{% endif %}
+
+<h2>핵심 요약</h2>
+<ul class="summary">
+{% for s in r.summary %}<li>{{ s }}</li>{% endfor %}
+</ul>
+
+<h2>상담 시 함께 살펴보실 내용</h2>
+<div class="consult"><ul>
+{% for s in r.consult %}<li>{{ s }}</li>{% endfor %}
+</ul></div>
+
+{% if r.rows %}
+<h2>후보지 비교표</h2>
+<table>
+  <thead><tr><th>지표</th>{% for c in r.candidates %}<th><span class="tag t{{ c.tag }}">{{ c.tag }}</span>{{ c.label }}</th>{% endfor %}</tr></thead>
+  <tbody>
+  {% for row in r.rows %}
+    <tr class="{{ 'sub' if row.sub }}"><td>{{ row.label }}</td>{% for c in r.candidates %}<td class="num">{{ row['values'].get(c.id, '–') }}</td>{% endfor %}</tr>
+  {% endfor %}
+  </tbody>
+</table>
+<p class="src">‘–’: 데이터 없음 또는 최소 집계 기준 미달로 표시하지 않음. 리포트는 “어디가 더 낫다”가 아니라 “어떤 조건에서 어떤 차이가 있다”를 보여드립니다.</p>
+{% endif %}
+
+{% if r.figures %}
+<h2>조건별 변화 폭</h2>
+<div class="figs">
+{% for f in r.figures %}
+<div class="fig"><h3>{{ f.title }}</h3>{{ f.svg|safe }}</div>
+{% endfor %}
+</div>
+{% endif %}
+
+{% if r.custom %}
+<h2>추가 분석 결과</h2>
+<pre style="white-space:pre-wrap;font-size:12.5px;background:var(--soft);padding:10px;border-radius:8px">{{ r.custom|tojson(indent=1) }}</pre>
+{% endif %}
+
+{% if r.evidence %}
+<h2>근거</h2>
+<table>
+  <thead><tr><th>지표</th><th>활용 데이터</th><th>기간</th><th>비교 기준·일수</th></tr></thead>
+  <tbody>
+  {% for e in r.evidence %}<tr><td>{{ e.item }}</td><td>{{ e.data }}</td><td>{{ e.period }}</td><td>{{ e.basis }}</td></tr>{% endfor %}
+  </tbody>
+</table>
+{% endif %}
+
+<h2>이 분석의 한계</h2>
+{% if r.dynamic_limitations %}
+<ul class="dyn">{% for s in r.dynamic_limitations %}<li>{{ s }}</li>{% endfor %}</ul>
+{% endif %}
+<ul class="limits">{% for s in r.limitations %}<li>{{ s }}</li>{% endfor %}</ul>
+
+<details>
+  <summary>검증 기록 ({{ r.checks|length }}건){% if r.verify_log %} · {{ r.verify_log }}{% endif %}</summary>
+  <ul class="checks">
+  {% for c in r.checks %}<li class="{{ c.status }}">[{{ c.status }}] {{ c.message }}</li>{% endfor %}
+  </ul>
+</details>
+
+<footer>
+  {{ r.sources }}<br>
+  수치는 모두 실행된 분석 코드의 출력값이며, AI 는 숫자를 만들어내지 않습니다. 최종 판단은 창업자와 상담사의 몫입니다.
+</footer>
+</div>
+</body>
+</html>
